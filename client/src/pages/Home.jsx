@@ -1,39 +1,33 @@
-import { Link } from "react-router-dom";
+import React from 'react';
+import { Link } from 'react-router-dom';
 
-export default function Home() {
+const Home = () => {
   return (
-    <div className="flex items-center justify-center min-h-screen">
-      <div className="relative z-10 max-w-screen-sm mx-auto p-8">
-        <h4 className="text-lg font-semibold text-gray-800 mb-2">
-          Column N.A. Member FDIC
-        </h4>
-        <h1 className="text-4xl font-extrabold mb-4 leading-tight">
-          The developer
-          <br />
-          infrastructure bank
-        </h1>
-        <p className="text-lg text-gray-700 mb-6">
-          The only nationally chartered bank built to enable developers and builders to cre
-          <span className="inline-block animate-typing border-r-2 border-gray-800 ml-1">
-            ate new financial products
-          </span>
+    <div className="min-h-screen bg-gray-100 flex items-center justify-center px-4">
+      <div className="max-w-xl w-full bg-white p-10 rounded-lg shadow-lg text-center">
+        <h1 className="text-2xl font-semibold text-gray-800 mb-2">Welcome to</h1>
+        <h2 className="text-4xl font-bold text-blue-700 mb-4">
+          Festival & Cultural Event Manager
+        </h2>
+        <p className="text-gray-600 mb-6">
+          The complete platform to explore, manage, and celebrate college festivals.
         </p>
-        <div className="flex gap-4">
-          <Link
-            className="inline-flex items-center px-6 py-3 bg-blue-600 text-white font-semibold rounded hover:bg-blue-700 transition"
-            to='/login'
-            rel="noopener noreferrer"
-          >
-            Get started
+
+        <div className="flex justify-center gap-4">
+          <Link to="/events">
+            <button className="bg-blue-600 text-white px-6 py-2 rounded hover:bg-blue-700">
+              Get Started
+            </button>
           </Link>
-          <Link
-            className="inline-flex items-center px-6 py-3 bg-gray-100 text-gray-800 font-semibold rounded hover:bg-gray-200 transition"
-            to="#"
-          >
-            Enjoy Yourself
+          <Link to="/about">
+            <button className="bg-gray-200 text-gray-800 px-6 py-2 rounded hover:bg-gray-300">
+              Learn More
+            </button>
           </Link>
         </div>
       </div>
     </div>
   );
-}
+};
+
+export default Home;
