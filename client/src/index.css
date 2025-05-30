@@ -1,1 +1,14 @@
-@import "tailwindcss";
+/* src/index.css */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Optional global custom styles */
+body {
+  @apply bg-orange-50 text-gray-800;
+  font-family: 'Inter', sans-serif;
+}
+
+button:focus {
+  @apply outline-none ring-2 ring-orange-300;
+}

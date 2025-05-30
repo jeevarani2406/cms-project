@@ -1,11 +1,17 @@
+import React from "react";
+import { BrowserRouter as Router } from "react-router-dom";
+import Navbar from "./components/Navbar";
+import AppRoutes from "./routes/AppRoutes";
+import { AuthProvider } from "./context/AuthContext";
+import "./index.css";
 
-import './App.css'
-
-function App() {
-
+export default function App() {
   return (
-   <button>hi</button>
-  )
+    <AuthProvider>
+      <Router>
+        <Navbar />
+        <AppRoutes />
+      </Router>
+    </AuthProvider>
+  );
 }
-
-export default App
