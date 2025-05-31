@@ -1,16 +1,49 @@
-import React from "react";
-import { useAuth } from "../context/AuthContext";
-import { PawPrint } from "lucide-react";
+import React, { useState } from "react";
+import PetForm from "../components/PetForm";
+import PetList from "../components/PetList";
 
 export default function Dashboard() {
-  const { user } = useAuth();
+  const [pets, setPets] = useState([]);
+  const [showForm, setShowForm] = useState(false);
+  const [showList, setShowList] = useState(false);
+
+  const addPet = (newPet) => {
+    setPets((prevPets) => [...prevPets, newPet]);
+    setShowForm(false);
+    setShowList(true);
+  };
 
   return (
-    <div className="p-10 text-center bg-white rounded-xl shadow-xl max-w-2xl mx-auto mt-10">
-      <h2 className="text-3xl font-bold text-orange-600 mb-4">🐶 Dashboard</h2>
-      <p className="text-lg text-gray-800">Hello, <span className="font-semibold text-orange-700">{user}</span>! Here's your pet adoption dashboard.</p>
-      <div className="mt-6">
-        <PawPrint className="mx-auto w-10 h-10 text-orange-300" />
+    <div className="min-h-screen bg-gradient-to-br from-purple-100 to-blue-100 p-6">
+      <header className="bg-white shadow-md rounded-xl p-6 text-center mb-10 max-w-4xl mx-auto">
+        <h1 className="text-4xl font-extrabold text-blue-700 mb-2">🐾 Pet Adoption Dashboard</h1>
+        <p className="text-gray-600">Manage your pets for adoption in style!</p>
+      </header>
+
+      <div className="flex justify-center gap-6 mb-8">
+        <button
+          className="bg-blue-600 hover:bg-blue-700 text-white font-semibold px-6 py-2 rounded-xl shadow transition-all duration-300"
+          onClick={() => {
+            setShowForm(true);
+            setShowList(false);
+          }}
+        >
+          ➕ Add Pet
+        </button>
+        <button
+          className="bg-green-600 hover:bg-green-700 text-white font-semibold px-6 py-2 rounded-xl shadow transition-all duration-300"
+          onClick={() => {
+            setShowForm(false);
+            setShowList(true);
+          }}
+        >
+          🐶 Show Pets
+        </button>
+      </div>
+
+      <div className="max-w-3xl mx-auto transition-all duration-300">
+        {showForm && <PetForm onAddPet={addPet} />}
+        {showList && <PetList pets={pets} />}
       </div>
     </div>
   );
